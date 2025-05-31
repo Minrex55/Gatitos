@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Gatitos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: grid;
+            margin-left: 10%;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            width: 80%;
+            height: 100vh;
+            border: 2px solid #333;
+        }
+
+        .containerimg {
+            width: 100%;
+            height: 30vh;
+        }
+
+        .containerimg img {
+            width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="containerimg"><img src="" alt="Gato1" class="catimg" id="cat1"></div>
+        <div class="containerimg"><img src="" alt="Gato2" class="catimg" id="cat2"></div>
+        <div class="containerimg"><img src="" alt="Gato3" class="catimg" id="cat3"></div>
+        <div class="containerimg"><img src="" alt="Gato4" class="catimg" id="cat4"></div>
+        <div class="containerimg"><img src="" alt="Gato5" class="catimg" id="cat5"></div>
+        <div class="containerimg"><img src="" alt="Gato6" class="catimg" id="cat6"></div>
+        <div class="containerimg"><img src="" alt="Gato7" class="catimg" id="cat7"></div>
+        <div class="containerimg"><img src="" alt="Gato8" class="catimg" id="cat8"></div>
+        <div class="containerimg"><img src="" alt="Gato9" class="catimg" id="cat9"></div>
+    </div>
+    <script>
+        fetch(
+            "https://api.thecatapi.com/v1/images/search?limit=9"
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                document.getElementById("cat1").setAttribute("src", res[0].url);
+                document.getElementById("cat2").setAttribute("src", res[1].url);
+                document.getElementById("cat3").setAttribute("src", res[2].url);
+                document.getElementById("cat4").setAttribute("src", res[3].url);
+                document.getElementById("cat5").setAttribute("src", res[4].url);
+                document.getElementById("cat6").setAttribute("src", res[5].url);
+                document.getElementById("cat7").setAttribute("src", res[6].url);
+                document.getElementById("cat8").setAttribute("src", res[7].url);
+                document.getElementById("cat9").setAttribute("src", res[8].url);
+            })
+            .catch((e) => { console.log(e) })
+    </script>
+</body>
+
+</html>
